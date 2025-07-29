@@ -1,7 +1,7 @@
 version: '3'
 services:
   node-app:
-    build: .
+    image: node-app:latest  # Replace build: . with this
     ports:
       - "3000:3000"
     environment:
