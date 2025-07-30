@@ -2,6 +2,7 @@ version: '3'
 services:
   node-app:
     image: node-app:${BUILD_NUMBER:-latest}
+    container_name: node-app
     ports:
       - "3000:3000"
     environment:
