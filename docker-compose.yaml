@@ -1,9 +1,10 @@
 version: '3'
 services:
   node-app:
-    image: node-app:latest  # Replace build: . with this
+    image: node-app:${BUILD_NUMBER:-latest}
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+      - BUILD_NUMBER=${BUILD_NUMBER:-latest}
     restart: unless-stopped
