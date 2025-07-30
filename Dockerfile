@@ -1,4 +1,5 @@
-FROM node
+FROM node:18-alpine
+
 WORKDIR /app
 
 # Copy package files first for better Docker layer caching
@@ -13,7 +14,7 @@ COPY . .
 # Expose port
 EXPOSE 3000
 
-# Add health check
+# Add simple Node.js health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD node -e "const http = require('http'); \
     const options = { host: 'localhost', port: 3000, path: '/', timeout: 5000 }; \
@@ -25,5 +26,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     req.setTimeout(5000); \
     req.end();"
 
-# Fix the entrypoint command
+# Start command
 CMD ["npm", "start"]
