@@ -15,7 +15,7 @@ COPY . .
 EXPOSE 3000
 
 # Add simple Node.js health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+HEALTHCHECK --interval=5s --timeout=5s --start-period=0s --retries=1 \
     CMD exit 1
 
 # Start command
